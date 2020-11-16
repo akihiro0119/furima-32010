@@ -1,24 +1,71 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usersテーブル
 
-Things you may want to cover:
+| Column     | Type    | Options      |
+|------------|------------------------|
+| nickname   | string  | null: false  |
+| email      | string  | null: false  |
+| password   | string  | null: false  |
+| first-name | string  | null: false  |
+| last-name  | string  | null: false  |
+| First-name | string  | null: false  |
+| Last-name  | string  | null: false  |
+| birth-year | string  | null: false  |
+| birth-month| string  | null: false  |
+| birth-day  | string  | null: false  |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :item
 
-* Configuration
+## Itemsテーブル
 
-* Database creation
+| Column      | Type          | Options  |
+|-------------|---------------|----------|
+| image       |               |          |
+| title       | text          | NOT NULL |
+| explanation | text          | NOT NULL |
+| category    | staring       | NOT NULL |
+| status      | staring       | NOT NULL |
+| delivery-fee| staring       | NOT NULL |
+| area        | staring       | NOT NULL |
+| days to ship| staring       | NOT NULL |
+| user        | references    | NOT NULL |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belong_to :user
+- has_one :address
+- has_one :card
 
-* Services (job queues, cache servers, search engines, etc.)
+## Addressテーブル
 
-* Deployment instructions
+| Column       | Type     | Options  |
+|--------------|----------|----------|
+| postal code  | staring  | NOT NULL |
+| pref         | staring  | NOT NULL |
+| city         | staring  | NOT NULL |
+| address code | staring  | NOT NULL |
+| building     | staring  | NOT NULL |
+| telephone    | staring  | NOT NULL |
 
-* ...
+### Association
+
+- belong_to :item
+- belong_to :card
+
+## Cardsテーブル
+
+| Column      | Type    | Options  |
+|-------------|---------|----------|
+| number      | staring | NOT NULL |
+| limit month | staring | NOT NULL |
+| limit years | staring | NOT NULL |
+| cord        | staring | NOT NULL |
+
+- belong_to :item
+- belong_to :address
+
+
+
+
