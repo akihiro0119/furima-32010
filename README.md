@@ -6,10 +6,10 @@
 | nickname             | string  | null: false  |
 | email                | string  | null: false  |
 | encrypted_password   | string  | null: false  |
-| first_name           | string  | null: false  |
-| last_name            | string  | null: false  |
-| First_name           | string  | null: false  |
-| Last_name            | string  | null: false  |
+| first_name           | string  | null: false  |（漢字）
+| last_name            | string  | null: false |(漢字)
+| firstname            | string  | null: false  |（カナ）
+| lastname             | string  | null: false   |（カナ）
 | birth_day            | date    | null: false  |
 
 
@@ -22,13 +22,13 @@
 
 | Column         | Type          | Options                      |
 |----------------|---------------|------------------------------|
-| title          | staring       | null: false                  |
+| title          | string        | null: false                  |
 | explanation    | text          | null: false                  |
 | category_id    | integer       | null: false                  |
 | status_id      | integer       | null: false                  |
-| freight_id     | integer       | null: false                  |
-| area_id        | integer       | null: false                  |
-| shipdate_id    | integer       | null: false                  |
+| freight_id     | integer       | null: false                  |(送料)
+| area_id        | integer       | null: false                  |(地域)
+| shipdate_id    | integer       | null: false                  |(発送までの)
 | user           | references    | null: false foreign_key: true|
 
 ### Association
@@ -40,12 +40,12 @@
 
 | Column       | Type     | Options                       |
 |--------------|----------|-------------------------------|
-| postal code  | staring  | null: false                   |
-| pref         | staring  | null: false                   |
-| city         | staring  | null: false                   |
-| address_code | staring  | null: false                   |
-| building     | staring  |                               |
-| telephone    | staring  | null; false                   |
+| postal code  | string   | null: false                   |
+| pref_id      | integer  | null: false                   |(都道府県)
+| city         | string   | null: false                   |(市町村区)
+| address_code | string   | null: false                   |(住所)
+| building     | string   |                               |
+| telephone    | string   | null; false                   |
 | history      | reference| null: false foreign_key: true |
 
 ### Association
