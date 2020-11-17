@@ -1,70 +1,72 @@
 
 ## Usersテーブル
 
-| Column     | Type    | Options      |
-|------------|------------------------|
-| nickname   | string  | null: false  |
-| email      | string  | null: false  |
-| password   | string  | null: false  |
-| first-name | string  | null: false  |
-| last-name  | string  | null: false  |
-| First-name | string  | null: false  |
-| Last-name  | string  | null: false  |
-| birth-year | string  | null: false  |
-| birth-month| string  | null: false  |
-| birth-day  | string  | null: false  |
+| Column               | Type    | Options      |
+|----------------------|------------------------|
+| nickname             | string  | null: false  |
+| email                | string  | null: false  |
+| encrypted_password   | string  | null: false  |
+| first_name           | string  | null: false  |
+| last_name            | string  | null: false  |
+| First_name           | string  | null: false  |
+| Last_name            | string  | null: false  |
+| birth_day            | date    | null: false  |
+
 
 ### Association
 
 - has_many :item
+- has_one : history
 
 ## Itemsテーブル
 
-| Column      | Type          | Options  |
-|-------------|---------------|----------|
-| image       |               |          |
-| title       | text          | NOT NULL |
-| explanation | text          | NOT NULL |
-| category    | staring       | NOT NULL |
-| status      | staring       | NOT NULL |
-| delivery-fee| staring       | NOT NULL |
-| area        | staring       | NOT NULL |
-| days to ship| staring       | NOT NULL |
-| user        | references    | NOT NULL |
+| Column         | Type          | Options                      |
+|----------------|---------------|------------------------------|
+| title          | text          | null: false                  |
+| explanation    | text          | null: false                  |
+| category_id    | staring       | null: false                  |
+| status_id      | staring       | null: false                  |
+| delivery_fee_id| staring       | null: false                  |
+| area_id        | staring       | null: false                  |
+| days_to_ship_id| staring       | null: false                  |
+| user           | references    | null: false foreign_key: true|
 
 ### Association
 
 - belong_to :user
-- has_one :address
-- has_one :card
+- has_one :history
 
 ## Addressテーブル
 
-| Column       | Type     | Options  |
-|--------------|----------|----------|
-| postal code  | staring  | NOT NULL |
-| pref         | staring  | NOT NULL |
-| city         | staring  | NOT NULL |
-| address code | staring  | NOT NULL |
-| building     | staring  | NOT NULL |
-| telephone    | staring  | NOT NULL |
+| Column       | Type     | Options     |
+|--------------|----------|-------------|
+| postal code  | staring  | null: false |
+| pref         | staring  | null: false |
+| city         | staring  | null: false |
+| address_code | staring  | null: false |
+| building     | staring  |             |
+| telephone    | staring  | null; false |
 
 ### Association
 
-- belong_to :item
-- belong_to :card
+- belong_to : history
 
-## Cardsテーブル
+| Column| Type      | Options                      |
+|-------|-----------|------------------------------|
+| user  | reference | null: false foreign_key: true|
+| item  | reference | null: false foreign_key: true|
 
-| Column      | Type    | Options  |
-|-------------|---------|----------|
-| number      | staring | NOT NULL |
-| limit month | staring | NOT NULL |
-| limit years | staring | NOT NULL |
-| cord        | staring | NOT NULL |
+### Association
 
-- belong_to :item
+- belong_to : user
+- belong_to : item
 - belong_to :address
+
+
+
+
+
+
 
 
 
