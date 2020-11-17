@@ -1,16 +1,16 @@
 
 ## Usersテーブル
 
-| Column               | Type    | Options      |
-|----------------------|------------------------|
-| nickname             | string  | null: false  |
-| email                | string  | null: false  |
-| encrypted_password   | string  | null: false  |
-| first_name           | string  | null: false  |（漢字）
-| last_name            | string  | null: false |(漢字)
-| firstname            | string  | null: false  |（カナ）
-| lastname             | string  | null: false   |（カナ）
-| birth_day            | date    | null: false  |
+| Column                     | Type    | Options      |
+|----------------------------|------------------------|
+| nickname                   | string  | null: false  |
+| email                      | string  | null: false  |
+| encrypted_password         | string  | null: false  |
+| first_name                 | string  | null: false  |（漢字）
+| last_name                  | string  | null: false  |(漢字)
+| first_name_kana            | string  | null: false  |（カナ）
+| last_name_kana             | string  | null: false  |（カナ）
+| birth_day                  | date    | null: false  |
 
 
 ### Association
@@ -23,6 +23,7 @@
 | Column         | Type          | Options                      |
 |----------------|---------------|------------------------------|
 | title          | string        | null: false                  |
+| price          | string        | null: false                  |
 | explanation    | text          | null: false                  |
 | category_id    | integer       | null: false                  |
 | status_id      | integer       | null: false                  |
@@ -33,7 +34,7 @@
 
 ### Association
 
-- belong_to :user
+- belongs_to :user
 - has_one :history
 
 ## Addressテーブル
@@ -50,7 +51,7 @@
 
 ### Association
 
-- belong_to : history
+- belongs_to : history
 
 ## historyテーブル
 
@@ -61,9 +62,9 @@
 
 ### Association
 
-- belong_to : user
-- belong_to : item
-- belong_to :address
+- belongs_to : user
+- belongs_to : item
+- belongs_to :address
 
 
 
