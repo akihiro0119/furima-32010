@@ -16,14 +16,14 @@
 ### Association
 
 - has_many :items
-- has_one : history
+- has_many : history
 
 ## Itemsテーブル
 
 | Column         | Type          | Options                      |
 |----------------|---------------|------------------------------|
 | title          | string        | null: false                  |
-| price          | string        | null: false                  |
+| price          | integer       | null: false                  |
 | explanation    | text          | null: false                  |
 | category_id    | integer       | null: false                  |
 | status_id      | integer       | null: false                  |
@@ -34,13 +34,13 @@
 
 ### Association
 
-- belongs_to :user
+- has_one :user
 
 ## Addressテーブル
 
 | Column       | Type     | Options                       |
 |--------------|----------|-------------------------------|
-| postal code  | string   | null: false                   |
+| postal_code  | string   | null: false                   |
 | pref_id      | integer  | null: false                   |(都道府県)
 | city         | string   | null: false                   |(市町村区)
 | address_code | string   | null: false                   |(住所)
