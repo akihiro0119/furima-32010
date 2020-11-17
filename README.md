@@ -22,13 +22,13 @@
 
 | Column         | Type          | Options                      |
 |----------------|---------------|------------------------------|
-| title          | text          | null: false                  |
+| title          | staring       | null: false                  |
 | explanation    | text          | null: false                  |
-| category_id    | staring       | null: false                  |
-| status_id      | staring       | null: false                  |
-| delivery_fee_id| staring       | null: false                  |
-| area_id        | staring       | null: false                  |
-| days_to_ship_id| staring       | null: false                  |
+| category_id    | integer       | null: false                  |
+| status_id      | integer       | null: false                  |
+| freight_id     | integer       | null: false                  |
+| area_id        | integer       | null: false                  |
+| shipdate_id    | integer       | null: false                  |
 | user           | references    | null: false foreign_key: true|
 
 ### Association
@@ -38,18 +38,21 @@
 
 ## Addressテーブル
 
-| Column       | Type     | Options     |
-|--------------|----------|-------------|
-| postal code  | staring  | null: false |
-| pref         | staring  | null: false |
-| city         | staring  | null: false |
-| address_code | staring  | null: false |
-| building     | staring  |             |
-| telephone    | staring  | null; false |
+| Column       | Type     | Options                       |
+|--------------|----------|-------------------------------|
+| postal code  | staring  | null: false                   |
+| pref         | staring  | null: false                   |
+| city         | staring  | null: false                   |
+| address_code | staring  | null: false                   |
+| building     | staring  |                               |
+| telephone    | staring  | null; false                   |
+| history      | reference| null: false foreign_key: true |
 
 ### Association
 
 - belong_to : history
+
+## historyテーブル
 
 | Column| Type      | Options                      |
 |-------|-----------|------------------------------|
