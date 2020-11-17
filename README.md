@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many : history
+- has_many : historys
 
 ## Itemsテーブル
 
@@ -34,7 +34,8 @@
 
 ### Association
 
-- has_one :user
+- belongs_to :user
+- has_one :history
 
 ## Addressテーブル
 
