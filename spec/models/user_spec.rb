@@ -78,20 +78,50 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
+      it "first_nameが半角だと登録できない"do
+        @user.first_name = "aa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+      end
       it "last_nameが空だと登録できない" do
         @user.last_name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+      it "last_nameが半角だと登録できない"do
+        @user.last_name = "aa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
       end
       it "first_name_kanaが空だと登録できない" do
         @user.first_name_kana = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
+      it "first_name_kanaが半角だと登録できない"do
+        @user.first_name_kana = "aa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
+      end
+      it "fast_name_kaneがひらがな、漢字だと登録できない"do
+        @user.first_name_kana = "あ亜"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
+      end
       it "last_name_kanaが空だと登録できない" do
         @user.last_name_kana = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+      it "last_name_kanaが半角だと登録できない"do
+        @user.last_name_kana = "aa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid. Input full-width katakana characters.")
+      end
+      it "last_name_kaneがひらがな、漢字だと登録できない"do
+        @user.last_name_kana = "あ亜"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid. Input full-width katakana characters.")
       end
       it "birth_dayが空だと登録できない" do
         @user.birth_day = nil
