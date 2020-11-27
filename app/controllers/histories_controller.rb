@@ -1,19 +1,18 @@
 class HistoriesController < ApplicationController
   before_action :set_item, only: [:index, :create]
+  before_action :authenticate_user!
 
   def index
+    if @item.user.id == current_user.id || @item.history != nil
+      redirect_to root_path
+    end
     @user_history = UserHistory.new
   end
 
   def create
     @user_history = UserHistory.new(history_params)
     if @user_history.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
-      Payjp::Charge.create(
-        amount: @item.price,  # 商品の値段
-        card: history_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
-      )
+      pay_item
        @user_history.save
       redirect_to root_path
     else
@@ -27,6 +26,15 @@ class HistoriesController < ApplicationController
     end
 
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.find(params[:item_id])
+    end
+
+    def pay_item
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+      Payjp::Charge.create(
+        amount: @item.price,  # 商品の値段
+        card: history_params[:token],    # カードトークン
+        currency: 'jpy'                 # 通貨の種類（日本円）
+      )
     end
 end
