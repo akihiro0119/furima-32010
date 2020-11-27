@@ -4,7 +4,7 @@ class UserHistory
 
   with_options presence: true do
     validates :postal_coad, format: {with:/\A\d{3}[-]\d{4}\z/, message:'is invalid. Input full-width characters.'}
-    validates :city,:token,:addresses_coad
+    validates :city, :token, :addresses_coad, :user_id, :item_id
     validates :pref_id, {numericality: { other_than: 1 }}
     # validates :telephone, {numericality: { maximum: 11 }}
     validates :telephone, numericality:{ greater_than_or_equal_to: 1, less_than_or_equal_to: 99999999999}

@@ -59,6 +59,16 @@ RSpec.describe UserHistory, type: :model do
         expect(@user_history.errors.full_messages).to include("Telephone must be greater than or equal to 1")
         # expect(@user_history.errors.full_messages).to include('is not a number')
       end
+      it 'ユーザーIDが存在しない場合' do
+        @user_history.user_id = nil
+        @user_history.valid?
+        expect(@user_history.errors.full_messages).to include("User can't be blank")
+      end
+      it 'アイテムIDが存在しない場合' do
+        @user_history.item_id = nil
+        @user_history.valid?
+        expect(@user_history.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
