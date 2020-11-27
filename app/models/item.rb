@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipdate
   has_one_attached :image
   belongs_to :user
+  has_one :history
 
   validates :image, presence: true
   validates :title, presence: true, length: { maximum: 40 }
